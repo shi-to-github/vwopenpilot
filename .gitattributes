@@ -1,0 +1,18 @@
+candidate/device-a6eed9e-2s/deploy/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-2s/rollback/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v2-probe/deploy/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v2-probe/rollback/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v2-probe/diagnostics/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v2-probe/deploy/ui -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v2-probe/rollback/ui -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v3/deploy/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v3/rollback/*.py -text whitespace=cr-at-eol
+candidate/device-a6eed9e-v3/diagnostics/*.py -text whitespace=cr-at-eol
+tools/manage_c2_v3_package.py -text
+tools/build_c2_v3_package.py -text
+tools/check_c2_v3_package.py -text
+candidate/**/deploy/* -text whitespace=cr-at-eol
+candidate/**/rollback/* -text whitespace=cr-at-eol
+candidate/**/diagnostics/* -text whitespace=cr-at-eol
+*.apk -text
+archive/** -text whitespace=cr-at-eol

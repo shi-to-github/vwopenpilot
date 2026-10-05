@@ -1,0 +1,34 @@
+{
+  "base_commit": "a6eed9e0c4d9a242db1e35978d2c32fe427491c7",
+  "device_branch": "beta2_sharan2",
+  "package_type": "C2 field-test package; disabled by default",
+  "default_mode": "V1; no stock-cruise button injection",
+  "manual_probe_mode": "one explicit UP or DOWN short press per engagement; no automatic speed control",
+  "preconditions_sha256": {
+    "carcontroller.py": "a5d124654307c1f3487c31f0545b8568d70773e42872fa3c5cc09123a8bf3c26",
+    "hca_timer_reset.py": "378190184d923d72c02580f0b9dd42a0b802b5b1573af1084f79f36c501f57f1",
+    "pqcan.py": "c875f1f5e71181bbe0ed054b7b7941a800a563c1508b56d61df575474f77047f",
+    "pq_stock_cruise_probe.py": null
+  },
+  "deploy_sha256": {
+    "carcontroller.py": "96aa6f6e9eaa7ff454bd1b328fcdc667584fb656154429c7ae576e86cc3bd230",
+    "hca_timer_reset.py": "378190184d923d72c02580f0b9dd42a0b802b5b1573af1084f79f36c501f57f1",
+    "pqcan.py": "38eb08d3ee170afbeaf1497b70376ae6cdcb9338907eff63ab380b881b4e0fd0",
+    "pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586"
+  },
+  "rollback_sha256": {
+    "carcontroller.py": "a5d124654307c1f3487c31f0545b8568d70773e42872fa3c5cc09123a8bf3c26",
+    "pqcan.py": "c875f1f5e71181bbe0ed054b7b7941a800a563c1508b56d61df575474f77047f",
+    "pq_stock_cruise_probe.py": null
+  },
+  "diagnostics_sha256": {
+    "capture_cruise.py": "3afdab0f00fc1e427ac0f9a0ba03165ea9ca524220567ce219d954be96df4098",
+    "probe_control.py": "6916ac2a5ee84227745e7e666a85aae030bdec259fa09bed5f90f2daa532cba9",
+    "overlay_server.py": "762f42be1f0fca014ee554b64d5c7e77bcedc4b880ed73f0ac290bcbd5e178ce"
+  },
+  "startup_sha256": {
+    "original_ui": "2e5dac5a2e2a2c5498216f2a03831fd6aba495b13a148fc0a9b58e8901ceb746",
+    "probe_ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910",
+    "boot_overlay.py": "1b00ebfb941f797cebfa84ddab9fa54c60f657fd520554f0d0f45debbd0695b6"
+  }
+}

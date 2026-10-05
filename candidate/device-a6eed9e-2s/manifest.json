@@ -1,0 +1,20 @@
+{
+  "base_commit": "a6eed9e0c4d9a242db1e35978d2c32fe427491c7",
+  "device_branch": "beta2_sharan2",
+  "remote_directory": "/data/openpilot/selfdrive/car/volkswagen",
+  "hca_message_hz": 50,
+  "reset_after_seconds": 240,
+  "standby_seconds": 2,
+  "remote_preconditions": {
+    "carcontroller.py_sha256": "32490ee911f109f14d262ecf6432d66f54957b4096f46b7d223eff618a0adb53",
+    "hca_timer_reset.py": "absent"
+  },
+  "deploy_sha256": {
+    "carcontroller.py": "a5d124654307c1f3487c31f0545b8568d70773e42872fa3c5cc09123a8bf3c26",
+    "hca_timer_reset.py": "378190184d923d72c02580f0b9dd42a0b802b5b1573af1084f79f36c501f57f1"
+  },
+  "rollback_sha256": {
+    "carcontroller.py": "32490ee911f109f14d262ecf6432d66f54957b4096f46b7d223eff618a0adb53"
+  },
+  "scope": "HCA only; interface.py and cruise buttons are not part of this package"
+}

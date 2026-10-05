@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+# Never publish private material from the research tree.
+archive/
+device-backups/
+artifacts/
+vendor/
+handoff/
+candidate/**/overlay/build/
+candidate/**/overlay/keys/
+# Raw road traces are never published. The compact bundle produced by
+# tools/extract_hca_evidence.py lives in evidence/ and IS meant to be
+# committed, so only the raw trace names are ignored here.
+v3-*.jsonl
+**/v3-*.jsonl

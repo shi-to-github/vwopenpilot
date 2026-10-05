@@ -1,0 +1,123 @@
+From af8892adce83716d058d95f1fc468406735b3c14 Mon Sep 17 00:00:00 2001
+From: Codex <codex@local>
+Date: Mon, 21 Sep 2026 10:03:55 +0800
+Subject: [PATCH 1/2] vw pq: stage long HCA standby reset candidate
+
+---
+ selfdrive/car/volkswagen/carcontroller.py   | 19 +++++++-
+ selfdrive/car/volkswagen/hca_timer_reset.py | 52 +++++++++++++++++++++
+ 2 files changed, 70 insertions(+), 1 deletion(-)
+ create mode 100644 selfdrive/car/volkswagen/hca_timer_reset.py
+
+diff --git a/selfdrive/car/volkswagen/carcontroller.py b/selfdrive/car/volkswagen/carcontroller.py
+index d6aa4a4..90043b8 100644
+--- a/selfdrive/car/volkswagen/carcontroller.py
++++ b/selfdrive/car/volkswagen/carcontroller.py
+@@ -5,6 +5,7 @@ from common.conversions import Conversions as CV
+ from common.realtime import DT_CTRL
+ from selfdrive.car import apply_driver_steer_torque_limits
+ from selfdrive.car.volkswagen import mqbcan, pqcan
++from selfdrive.car.volkswagen.hca_timer_reset import HcaTimerReset, PQ_LONG_STANDBY_ENABLED
+ from selfdrive.car.volkswagen.values import CANBUS, PQ_CARS, CarControllerParams, STANDING_RESUME_SPAM_CARS
+ 
+ VisualAlert = car.CarControl.HUDControl.VisualAlert
+@@ -23,6 +24,7 @@ class CarController:
+     self.frame = 0
+     self.hcaSameTorqueCount = 0
+     self.hcaEnabledFrameCount = 0
++    self.pq_hca_timer_reset = HcaTimerReset(100 / self.CCP.STEER_STEP) if CP.carFingerprint in PQ_CARS and PQ_LONG_STANDBY_ENABLED else None
+ 
+   def update(self, CC, CS, ext_bus, now_nanos):
+     actuators = CC.actuators
+@@ -45,7 +47,20 @@ class CarController:
+       if CC.latActive:
+         new_steer = int(round(actuators.steer * self.CCP.STEER_MAX))
+         apply_steer = apply_driver_steer_torque_limits(new_steer, self.apply_steer_last, CS.out.steeringTorque, self.CCP)
+-        if apply_steer == 0:
++        if self.pq_hca_timer_reset is not None:
++          if apply_steer != 0 and self.apply_steer_last == apply_steer:
++            self.hcaSameTorqueCount += 1
++            if self.hcaSameTorqueCount > 1.9 * (100 / self.CCP.STEER_STEP):  # 1.9s
++              apply_steer -= (1, -1)[apply_steer < 0]
++              self.hcaSameTorqueCount = 0
++          else:
++            self.hcaSameTorqueCount = 0
++          apply_steer, hcaEnabled, reset_completed = self.pq_hca_timer_reset.update(True, apply_steer)
++          if not hcaEnabled:
++            self.hcaSameTorqueCount = 0
++          if reset_completed:
++            self.hcaEnabledFrameCount = 0
++        elif apply_steer == 0:
+           hcaEnabled = False
+           self.hcaEnabledFrameCount = 0
+         else:
+@@ -65,6 +80,8 @@ class CarController:
+       else:
+         hcaEnabled = False
+         apply_steer = 0
++        if self.pq_hca_timer_reset is not None:
++          self.pq_hca_timer_reset.update(False, 0)
+ 
+       self.apply_steer_last = apply_steer
+       can_sends.append(self.CCS.create_steering_control(self.packer_pt, CANBUS.pt, apply_steer, hcaEnabled))
+diff --git a/selfdrive/car/volkswagen/hca_timer_reset.py b/selfdrive/car/volkswagen/hca_timer_reset.py
+new file mode 100644
+index 0000000..3714870
+--- /dev/null
++++ b/selfdrive/car/volkswagen/hca_timer_reset.py
+@@ -0,0 +1,52 @@
++"""Candidate long-standby reset for PQ HCA timers.
++
++Disabled by default. Enable only in a device-specific test commit after the
++running C2 revision and message rate have been verified.
++"""
++
++PQ_LONG_STANDBY_ENABLED = False
++PQ_RESET_AFTER_S = 240.0
++PQ_STANDBY_S = 2.0
++
++
++class HcaTimerReset:
++  def __init__(self, message_hz, reset_after_s=PQ_RESET_AFTER_S, standby_s=PQ_STANDBY_S):
++    self.message_hz = message_hz
++    self.reset_after_frames = int(round(reset_after_s * message_hz))
++    self.required_standby_frames = int(round(standby_s * message_hz))
++    self.active_frames = 0
++    self.standby_frames = 0
++    self.forcing_standby = False
++
++  def update(self, lat_active, requested_torque):
++    if not lat_active:
++      self.active_frames = 0
++      self.standby_frames = 0
++      self.forcing_standby = False
++      return 0, False, False
++
++    if self.forcing_standby:
++      self.standby_frames += 1
++      completed = self.standby_frames >= self.required_standby_frames
++      if completed:
++        self.active_frames = 0
++        self.standby_frames = 0
++        self.forcing_standby = False
++      return 0, False, completed
++
++    if requested_torque == 0:
++      self.standby_frames += 1
++      completed = self.standby_frames >= self.required_standby_frames
++      if completed:
++        self.active_frames = 0
++      return 0, False, completed
++
++    self.standby_frames = 0
++    self.active_frames += 1
++    if self.active_frames >= self.reset_after_frames:
++      self.forcing_standby = True
++      self.standby_frames = 1
++      return 0, False, self.required_standby_frames == 1
++
++    return requested_torque, True, False
++
+-- 
+2.55.0.windows.3
+

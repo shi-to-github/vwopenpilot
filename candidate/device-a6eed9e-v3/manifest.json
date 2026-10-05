@@ -1,0 +1,52 @@
+{
+  "base_commit": "a6eed9e0c4d9a242db1e35978d2c32fe427491c7",
+  "device_branch": "beta2_sharan2",
+  "package_type": "Local V3 candidate; vehicle execution not verified",
+  "default_mode": "base; lateral opportunity reset and passive logging, no cruise injection",
+  "hca": {
+    "seek_after_s": 180,
+    "standby_s": 2,
+    "takeover_s": 240
+  },
+  "cruise": {
+    "max_press_frames": 9,
+    "max_press_s": 0.18,
+    "ack_timeout_s": 2,
+    "minimum_actual_kph": 70,
+    "minimum_target_kph": 60
+  },
+  "preconditions_sha256": {
+    "carcontroller.py": "96aa6f6e9eaa7ff454bd1b328fcdc667584fb656154429c7ae576e86cc3bd230",
+    "carstate.py": "055d9c26166f080b51c51c32ae098073c47e936c3d8df200c2a2bf77bc17a1a9",
+    "hca_timer_reset.py": "378190184d923d72c02580f0b9dd42a0b802b5b1573af1084f79f36c501f57f1",
+    "interface.py": "dba94683392e2863d4fb7e9a424a23d37fd77fae1d96fef287dd83080204b359",
+    "pq46_cruise.py": null,
+    "pq46_runtime.py": null,
+    "pqcan.py": "38eb08d3ee170afbeaf1497b70376ae6cdcb9338907eff63ab380b881b4e0fd0"
+  },
+  "deploy_sha256": {
+    "carcontroller.py": "24e2acac858745d95479d1911ff7afc123b75cf1dcb39b6039b62866482b3bf8",
+    "carstate.py": "3a549a7c299e168ea5de22ae5f288f465dc0bf8c17a7aa2a6b5eabf481d1c0b3",
+    "hca_timer_reset.py": "bb15c3da2430b07785fa0736a10f92dd4519b95e030995023f713341ab1ee3dd",
+    "interface.py": "d2a7c850a28510d5c0da2a45d56bbc63ff1efad923bf8be65dd4ce24ac257a7d",
+    "pq46_cruise.py": "a25905fa501887364f3a9b80b7892c6f28c6bca5d031d4b5a38a8029f32dc6d0",
+    "pq46_runtime.py": "9e9d540ea4b56bb55f40237cce3c50c4770a1efb6eb15e79cff72ffafefedffe",
+    "pqcan.py": "e7f9e1186c9ca40d7e47fd9badbddf3b224f6f810989f7ce6b73488cc0cc231b"
+  },
+  "preserved_sha256": {
+    "pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586"
+  },
+  "diagnostics_sha256": {
+    "v3_server.py": "f2389bde87d244b050b729d54442e94c96a9f13f6e969de2e2f021ea4115da69",
+    "v3_capture.py": "007976e5019bb0624361e36846e68376fa4e335ec8f55a723e2fd23836bd20ba"
+  },
+  "startup_sha256": {
+    "ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910",
+    "v2_boot": "1b00ebfb941f797cebfa84ddab9fa54c60f657fd520554f0d0f45debbd0695b6",
+    "v3_boot": "c205be0116841e2697991f5c099343ebbf80127b90e144a93b6f02e1e09fc1e3"
+  },
+  "apk_sha256": {
+    "v3": "122353c7ac795bd58eba2500ab38dc13a8549df3c2bf9a0709e040e8d9964c31",
+    "v2": "d749c49135902d289f4871cb744d44f63e03134feb485a74c99ae76bc70586a6"
+  }
+}

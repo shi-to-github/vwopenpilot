@@ -1,0 +1,71 @@
+{
+  "version": "hca-r4-forced",
+  "device_branch": "beta2_sharan2",
+  "base_commit": "a6eed9e0c4d9a242db1e35978d2c32fe427491c7",
+  "changed": [
+    "hca_timer_reset.py",
+    "v3_server.py"
+  ],
+  "changed_targets": {
+    "hca_timer_reset.py": "/data/openpilot/selfdrive/car/volkswagen/hca_timer_reset.py",
+    "v3_server.py": "/data/pq46/v3_server.py"
+  },
+  "before_sha256": {
+    "/data/openpilot/selfdrive/car/volkswagen/carcontroller.py": "958316d73fb334395e7579e3a5edc557ee8d1511ad02183196a32ea0eea1b55e",
+    "/data/openpilot/selfdrive/car/volkswagen/carstate.py": "3a549a7c299e168ea5de22ae5f288f465dc0bf8c17a7aa2a6b5eabf481d1c0b3",
+    "/data/openpilot/selfdrive/car/volkswagen/hca_timer_reset.py": "20a19d481f858bb18958d1bc480f858f57f45437cccfa08e7bbab349fbe32364",
+    "/data/openpilot/selfdrive/car/volkswagen/interface.py": "d2a7c850a28510d5c0da2a45d56bbc63ff1efad923bf8be65dd4ce24ac257a7d",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_cruise.py": "a25905fa501887364f3a9b80b7892c6f28c6bca5d031d4b5a38a8029f32dc6d0",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_runtime.py": "02d500c5de50274cedf176e577fcde942ac902ac01411e87767e7813286323d2",
+    "/data/openpilot/selfdrive/car/volkswagen/pqcan.py": "e7f9e1186c9ca40d7e47fd9badbddf3b224f6f810989f7ce6b73488cc0cc231b",
+    "/data/openpilot/selfdrive/car/volkswagen/pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586",
+    "/data/pq46/v3_server.py": "bc1b3ffb815e68a5068834e20ffa3e2e8c0fa6572a07b8a2259275bfa763a092",
+    "/data/pq46/v3_capture.py": "bc1545f47a7850bf900b715da9f99a9a637d5bba33dfdca861ce3e382796602e",
+    "/data/pq46/boot_overlay.py": "c205be0116841e2697991f5c099343ebbf80127b90e144a93b6f02e1e09fc1e3",
+    "/data/openpilot/selfdrive/ui/ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910"
+  },
+  "after_sha256": {
+    "/data/openpilot/selfdrive/car/volkswagen/carcontroller.py": "958316d73fb334395e7579e3a5edc557ee8d1511ad02183196a32ea0eea1b55e",
+    "/data/openpilot/selfdrive/car/volkswagen/carstate.py": "3a549a7c299e168ea5de22ae5f288f465dc0bf8c17a7aa2a6b5eabf481d1c0b3",
+    "/data/openpilot/selfdrive/car/volkswagen/hca_timer_reset.py": "d2ff04d18f175f325eb7650bca388dd8ceea9c5f6c72d9d12265b2b51ba92b05",
+    "/data/openpilot/selfdrive/car/volkswagen/interface.py": "d2a7c850a28510d5c0da2a45d56bbc63ff1efad923bf8be65dd4ce24ac257a7d",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_cruise.py": "a25905fa501887364f3a9b80b7892c6f28c6bca5d031d4b5a38a8029f32dc6d0",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_runtime.py": "02d500c5de50274cedf176e577fcde942ac902ac01411e87767e7813286323d2",
+    "/data/openpilot/selfdrive/car/volkswagen/pqcan.py": "e7f9e1186c9ca40d7e47fd9badbddf3b224f6f810989f7ce6b73488cc0cc231b",
+    "/data/openpilot/selfdrive/car/volkswagen/pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586",
+    "/data/pq46/v3_server.py": "4b0e1979a950b21dc6675770ae6c8a1f8a9507258cc8972501e192b41fe95e3d",
+    "/data/pq46/v3_capture.py": "bc1545f47a7850bf900b715da9f99a9a637d5bba33dfdca861ce3e382796602e",
+    "/data/pq46/boot_overlay.py": "c205be0116841e2697991f5c099343ebbf80127b90e144a93b6f02e1e09fc1e3",
+    "/data/openpilot/selfdrive/ui/ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910"
+  },
+  "apk_sha256": {
+    "before": "847eccb049c60c3d6dad2c274523385c22864ab2d61dae7134c934bf77f19bf0",
+    "after": "bdab3df05a5281297ae95aeda9453378564d8298e8e339175dd59a548df11251"
+  },
+  "parameters": {
+    "normal_until_s": 180,
+    "notice_from_s": 300,
+    "prompt_at_s": 350,
+    "forced_pause_at_s": 355,
+    "backstop_at_s": 400,
+    "unconditional_pause": true,
+    "forced_pause_abort_gates": false,
+    "soft_disable_at_prompt": false,
+    "assumed_hardware_limit_s": 360,
+    "standby_s": 1.1,
+    "standby_frames": 55,
+    "scheduled_notice_s": 3,
+    "prediction_margin_s": 0.2,
+    "single_90_request_abort": false,
+    "sustained_saturation_threshold": 270,
+    "saturation_duration_s": 0.2,
+    "opportunistic_counters_separate": true
+  },
+  "deployment_status": "stable-1: installed and reboot verified 2026-10-03; 3 h 34 m road drive with zero assist loss",
+  "stable_tag": "stable-1-hca-r4-forced",
+  "road_result": "2026-10-03 approx 19:16-22:50, about 3 h 34 m and 60 reset cycles; opportunistic resets typically 180-220 s, occasionally 250-300+ s, never past 300 s; zero assist disconnection; 355 s forced fallback never exercised on road. Driver perception only, raw trace not retrieved.",
+  "verify_note": "1.1 s standby effective for this 5N1/0503 rack per driver report; no raw 978 frames collected",
+  "longitudinal_default": "base/off",
+  "verification_record": "docs/HCA_R4_FORCED_DEPLOYMENT_20261003.md",
+  "road_review": "docs/R4_ROAD_REVIEW_20261003.md"
+}

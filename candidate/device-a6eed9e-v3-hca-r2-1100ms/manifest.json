@@ -1,0 +1,63 @@
+{
+  "version": "hca-r2-1100ms",
+  "base_commit": "a6eed9e0c4d9a242db1e35978d2c32fe427491c7",
+  "device_branch": "beta2_sharan2",
+  "changed": [
+    "hca_timer_reset.py",
+    "carcontroller.py",
+    "pq46_runtime.py"
+  ],
+  "before_sha256": {
+    "/data/openpilot/selfdrive/car/volkswagen/carcontroller.py": "467e466239c5141321409d03dfde13ffe20af01e168fb3a35179f994ee330902",
+    "/data/openpilot/selfdrive/car/volkswagen/carstate.py": "3a549a7c299e168ea5de22ae5f288f465dc0bf8c17a7aa2a6b5eabf481d1c0b3",
+    "/data/openpilot/selfdrive/car/volkswagen/hca_timer_reset.py": "c7fdca2e5b4908c92a114704a27326a5705e6ea334c4250bb39477c3160c0b7c",
+    "/data/openpilot/selfdrive/car/volkswagen/interface.py": "d2a7c850a28510d5c0da2a45d56bbc63ff1efad923bf8be65dd4ce24ac257a7d",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_cruise.py": "a25905fa501887364f3a9b80b7892c6f28c6bca5d031d4b5a38a8029f32dc6d0",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_runtime.py": "e126851c84443785d572c49b7163f7ff0b8c0d8900d2783f9908d559f666807d",
+    "/data/openpilot/selfdrive/car/volkswagen/pqcan.py": "e7f9e1186c9ca40d7e47fd9badbddf3b224f6f810989f7ce6b73488cc0cc231b",
+    "/data/openpilot/selfdrive/car/volkswagen/pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586",
+    "/data/pq46/v3_server.py": "f2389bde87d244b050b729d54442e94c96a9f13f6e969de2e2f021ea4115da69",
+    "/data/pq46/v3_capture.py": "bc1545f47a7850bf900b715da9f99a9a637d5bba33dfdca861ce3e382796602e",
+    "/data/pq46/boot_overlay.py": "c205be0116841e2697991f5c099343ebbf80127b90e144a93b6f02e1e09fc1e3",
+    "/data/openpilot/selfdrive/ui/ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910"
+  },
+  "after_sha256": {
+    "/data/openpilot/selfdrive/car/volkswagen/carcontroller.py": "836100a531c84d6c1bab5d229cf1811ade4fe401926ac73f2a9891b3c96d67a6",
+    "/data/openpilot/selfdrive/car/volkswagen/carstate.py": "3a549a7c299e168ea5de22ae5f288f465dc0bf8c17a7aa2a6b5eabf481d1c0b3",
+    "/data/openpilot/selfdrive/car/volkswagen/hca_timer_reset.py": "357a14593b7f1b2cb2f225603b1cac7e543afb4e0201594004b1d4706282a527",
+    "/data/openpilot/selfdrive/car/volkswagen/interface.py": "d2a7c850a28510d5c0da2a45d56bbc63ff1efad923bf8be65dd4ce24ac257a7d",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_cruise.py": "a25905fa501887364f3a9b80b7892c6f28c6bca5d031d4b5a38a8029f32dc6d0",
+    "/data/openpilot/selfdrive/car/volkswagen/pq46_runtime.py": "50c659c11357fd0539ff36c45ee5171f8794ca7b053c6519706a1e956cba6ee7",
+    "/data/openpilot/selfdrive/car/volkswagen/pqcan.py": "e7f9e1186c9ca40d7e47fd9badbddf3b224f6f810989f7ce6b73488cc0cc231b",
+    "/data/openpilot/selfdrive/car/volkswagen/pq_stock_cruise_probe.py": "87a44f57ea19c469fe197f82da5c8435018d5b4ec5507a7bb26c5cad76517586",
+    "/data/pq46/v3_server.py": "f2389bde87d244b050b729d54442e94c96a9f13f6e969de2e2f021ea4115da69",
+    "/data/pq46/v3_capture.py": "bc1545f47a7850bf900b715da9f99a9a637d5bba33dfdca861ce3e382796602e",
+    "/data/pq46/boot_overlay.py": "c205be0116841e2697991f5c099343ebbf80127b90e144a93b6f02e1e09fc1e3",
+    "/data/openpilot/selfdrive/ui/ui": "dc2f019185b1d02d5a6c3298986cc58d6224340033164a782e4781c02b0a8910"
+  },
+  "parameters": {
+    "seek_after_s": 150,
+    "entry_window_s": 0.4,
+    "entry_rms_limit": 60,
+    "entry_peak_limit": 90,
+    "entry_instantaneous_limit": 60,
+    "abort_raw_limit": 90,
+    "quiet_s": 0.75,
+    "standby_s": 1.1,
+    "deadline_s": 240,
+    "standby_frames": 55,
+    "prediction_horizon_s": 1.3,
+    "prediction_margin_s": 0.2
+  },
+  "unchanged": [
+    "PID",
+    "entry/abort thresholds",
+    "150s search",
+    "240s software takeover",
+    "driver/data immediate aborts",
+    "cruise",
+    "diag1 capture",
+    "panda safety"
+  ],
+  "deployment_status": "local candidate only; not installed"
+}
